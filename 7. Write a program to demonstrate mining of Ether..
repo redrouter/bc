@@ -1,0 +1,51 @@
+import hashlib
+import time
+
+# Simulate an Ethereum block
+class Block:
+    def __init__(self, index, previous_hash, transactions, nonce=0):
+        self.index = index
+        self.previous_hash = previous_hash
+        self.transactions = transactions
+        self.nonce = nonce
+        self.timestamp = time.time()
+
+    def compute_hash(self):
+        """
+        Returns the hash of the block instance by combining all the properties.
+        """
+        block_string = f"{self.index}{self.previous_hash}{self.transactions}{self.nonce}{self.timestamp}"
+        return hashlib.sha256(block_string.encode()).hexdigest()
+
+# Mining class to simulate the mining process
+class EthereumMiner:
+    def __init__(self, difficulty):
+        self.difficulty = difficulty  # Number of leading zeros required in hash
+
+    def mine(self, block):
+        """
+        Simulates the mining process by finding a hash that meets the difficulty criteria.
+        """
+        while True:
+            hash_value = block.compute_hash()
+            if hash_value[:self.difficulty] == '0' * self.difficulty:
+                print(f"Successfully mined block with hash: {hash_value}")
+                return hash_value
+            else:
+                block.nonce += 1
+
+# Demonstration of mining
+if __name__ == "__main__":
+    difficulty = 4  # Adjust the difficulty (number of leading zeros required in the hash)
+    
+    # Creating a block with some dummy transactions
+    previous_hash = "0000000000000000000000000000000000000000000000000000000000000000"
+    transactions = "Alice pays Bob 5 ETH"
+    
+    new_block = Block(1, previous_hash, transactions)
+    miner = EthereumMiner(difficulty)
+    
+    print("Mining in progress...")
+    mined_hash = miner.mine(new_block)
+    print(f"Block successfully mined with nonce value: {new_block.nonce}")
+    print(f"Mined block hash: {mined_hash}")
