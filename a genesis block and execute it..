@@ -1,0 +1,47 @@
+!pip install pandas
+!pip install numpy
+!pip install matplotlib
+!pip install pycryptodome
+!pip install cryptography
+
+
+genesis_block = {
+    'previous_hash':'',
+    'index':0,
+    'transaction':[],
+    'nonce':23
+}
+
+blockchain = [genesis_block]
+
+
+def get_last_value():
+  return(blockchain[-1])
+
+
+def add_value(recipient,sender,amount=1.0):
+  transaction = {'sender': sender,
+                 'recipient': recipient,
+                 'amount': amount}
+  open_transaction.append(transaction)
+
+
+def get_transaction_value():
+  tx_sender = raw_input('Enter the sender:')
+  tx_recipient = raw__input('Entrer the recipient of the transaction:')
+  tx_amount = float(input('Enter your transaction amouint:'))
+  return tx_sender, tx_recipient, tx_amount
+
+
+def get_user_choice():
+  user_input = input("Please give your choice her:")
+  return user_input
+
+
+def print_block():
+  for block in blockchain:
+    print("1_Vaishnavi \n")
+    print("Here is your block")
+    print(block)
+
+print_block()
