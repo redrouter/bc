@@ -1,0 +1,21 @@
+{
+    "confg":{
+      "chainId":3792,
+      "homesteadBlock":0,
+      "eip150Block":0,
+      "eip155Block":0,
+      "eip158Block":0
+    },
+    "diffculty":"2000",
+    "gasLimit":"2100000",
+    "alloc":{
+      "00b6C4c81f58B8d692A7B46AD1e16a1147c25299F":{
+        "balance":"9000000000000000000"
+      }
+    }
+   }
+
+
+Run command geth --identity "localB" --http --http.port "8280" --http.corsdomain "*" --http.api "db,eth,net,web3" --datadir
+
+Run the command miner.setEtherbase('0xC050FE4d9bAc591d29538e2FD9cCA848B29489D0’) in the geth console
